@@ -1,0 +1,349 @@
+@font-face {
+    font-family: ggsans;
+    src: url(../assets/fonts/ggsans-Normal.ttf);
+}
+
+@font-face {
+    font-family: ggsansmedium;
+    src: url(../assets/fonts/ggsans-Medium.ttf);
+}
+
+@font-face {
+    font-family: ggsanssemibold;
+    src: url(../assets/fonts/ggsans-Semibold.ttf);
+}
+
+@font-face {
+    font-family: ggsansbold;
+    src: url(../assets/fonts/ggsans-Bold.ttf);
+}
+
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-family: ggsans;
+}
+
+.background-div {
+    background-image: url(/assets/discord-background.svg);
+    background-color: #404eed;
+    background-position: 50%;
+    background-position-y: 10%;
+    background-repeat: no-repeat;
+    left: 0;
+    top: 0;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    height: 550px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 120px 40px 0 40px;
+    color: white;
+}
+
+.first-title {
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-family: 'Arimo', sans-serif;
+    font-size: 70px;
+}
+
+.first-paragraph-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.first-paragraph {
+    width: 780px;
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.main-button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    z-index: 2;
+}
+
+.button-download {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    font-size: 20px;
+    margin-right: 22px;
+    padding: 16px 32px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: ggsansmedium;
+}
+
+.icon-2tQ9Jt {
+    padding-right: 6px;
+}
+
+.button-open {
+    background: #23272a;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 16px 32px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: ggsansmedium;
+}
+
+.left-side-image {
+    position: absolute;
+    max-height: 352px;
+    top: 273px;
+    left: -78px;
+}
+
+.right-side-image {
+    position: absolute;
+    max-height: 360px;
+    top: 265px;
+    right: 0;
+}
+
+.first-container {
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.first-container-content-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 120px 40px;
+}
+
+.first-container-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 120px;
+    width: 380px;
+}
+
+h2 {
+    display: block;
+    font-size: 48px;
+    font-family: ggsansbold;
+}
+
+p {
+    display: block;
+    padding-top: 20px;
+    font-family: ggsans;
+    font-size: 20px;
+    line-height: 2;
+}
+
+.second-container {
+    display: flex;
+    justify-content: center;
+    background: #f6f6f6;
+}
+
+.second-container-content-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 120px 40px;
+}
+
+.second-container-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-right: 120px;
+    width: 380px;
+}
+
+.third-container {
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+}
+
+.third-container-content-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 120px 40px;
+}
+
+.third-container-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 120px;
+    width: 380px;
+}
+
+.fourth-container {
+    display: flex;
+    justify-content: center;
+    padding: 100px 0px 40px 0;
+    background: #f6f6f6;
+}
+
+.fourth-container-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 1300px;
+    text-align: center;
+}
+
+.fourth-container-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 980px;
+}
+
+.fourth-container-title {
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-family: 'Seymour One', sans-serif;
+    font-size: 40px;
+    padding: 0;
+}
+
+.fourth-container-paragraph {
+    padding: 0;
+}
+
+.download-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f6f6f6;
+}
+
+.sparkles {
+    display: flex;
+    position: relative;
+    top: 50px;
+}
+
+.download-text {
+    display: flex;
+    font-size: 32px;
+    font-family: ggsansbold;
+}
+
+.last-button-download {
+    display: flex;
+    align-items: center;
+    margin-bottom: 120px;
+    background: #5865f2;
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 30px;
+    padding: 16px 26px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-family: ggsansmedium;
+}
+
+.footer-main {
+    display: flex;
+    flex-direction: column;
+    background: #23272a;
+    align-items: center;
+}
+
+.footer-content-wrapper {
+    display: flex;
+    width: 1180px;
+    border-bottom: 1px solid #5865f2;
+    padding-bottom: 40px;
+}
+
+.first-footer-title {
+    display: flex;
+    justify-content: center;
+    width: 280px;
+    font-size: 28px;
+    color: #5865f2;
+    text-transform: uppercase;
+    font-family: 'Seymour One', sans-serif;
+    padding-bottom: 15px;
+}
+
+.footer-title {
+    color: #5b6bff;
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 2;
+}
+
+.footer-text {
+    display: flex;
+    font-family: ggsans;
+    font-size: 16px;
+    padding: 0;
+    line-height: 2;
+    color: white;
+}
+
+.language-footer-text {
+    display: flex;
+    font-family: ggsans;
+    font-size: 14px;
+    padding: 0;
+    line-height: 2;
+    color: white;
+}
+
+.first-column, .second-column, .third-column, .fourth-column, .fifth-column {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 120px 0 0;
+}
+
+.language-wrapper {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.socialIcon-38NB2e {
+    padding-right: 18px;
+}
+
+.us-flag {
+    display: flex;
+    padding-right: 5px;
+    max-height: 16px;
+    max-width: 24px;
+}
+
+.signup-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 1180px;
+    padding: 30px 0 50px 0;
+}
+
+.signup-button {
+    background: #5865f2;
+    color: #ffffff;
+    padding: 11px 14px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-family: ggsansmedium;
+    font-size: 14px;
+}

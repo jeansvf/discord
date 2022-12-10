@@ -1,0 +1,33 @@
+.header-main {
+    display: flex;
+    justify-content: center;
+    background: #404eed;
+}
+
+.nav-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1180px;
+    height: 75px;
+}
+
+.link {
+    padding: 20px 16px;
+    color: #ffffff;
+    font-family: ggsanssemibold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.login-button {
+    background: #ffffff;
+    padding: 10px 16px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-family: ggsansmedium;
+    font-size: 14px;
+    font-weight: 500;
+}
