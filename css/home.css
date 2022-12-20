@@ -1,0 +1,89 @@
+@font-face {
+    font-family: ggsans;
+    src: url(../assets/fonts/ggsans-Normal.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    list-style: none;
+    font-family: ggsans;
+}
+
+body {
+    display: flex;
+}
+
+.navbar {
+    display: flex;
+    background: #202225;
+    min-width: 72px;
+    height: 100vh;
+}
+
+.private-channels {
+    display: flex;
+    background: #2f3136;
+    min-width: 240px;
+}
+
+.messages-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background: #36393f;
+    justify-content: flex-end;
+}
+
+.messages-list {
+    margin: 0 14px;
+}
+
+.message-content {
+    font-size: 16px;
+    color: #ffffff;
+    padding: 2px;
+
+    padding-left: 56px;
+
+
+}
+
+.message-content:hover {
+    background: #32353b;
+}   
+
+.chat-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90px;
+}
+
+.chat {
+    display: flex;
+    width: 1580px;
+}
+
+.chat-input {
+    display: flex;
+    width: 100%;
+    padding: 11px 10px 11px 0;
+    background: #40444b;
+    outline: 0;
+    border-radius: 8px;
+}
+
+input[type=text] {
+    padding-left: 18px;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.chat-input::placeholder {
+    font-size: 16px;
+    color: #767a82;
+}
