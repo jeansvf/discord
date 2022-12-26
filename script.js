@@ -5,22 +5,17 @@ var messageListItem;
 var contextMenu;
 var contextMenuDeleteButton;
 var contextMenuEditButton;
-var messageId = 0;
 var selectedMessage;
 var beingEdited;
 var editInput;
-
-//test
 var editInputWrapper;
 
 const createMessage = () => {
-    // MAKE THE BACKGROUND COLOR OF THE MESSAGE CONTINUE HIGHLITED IF THE CONTEXTMENU IS OPEN
     messageListItem = document.createElement("li");
-    messageListItem.classList.add("message-content", messageId + 1);
+    messageListItem.classList.add("message-content");
     messageListItem.innerText = input.value;
     messagesList.appendChild(messageListItem);
     input.value = "";
-    messageId++;
     messageListItem.addEventListener("contextmenu", (e) => {
     selectedMessage = e.target;
     createContextMenu();
@@ -31,13 +26,11 @@ const createContextMenu = () => {
     if (contextMenu !== undefined){
         contextMenu.remove();
     }
-
     contextMenu = document.createElement("div");
     contextMenu.classList.add("context-menu");
     contextMenu.style.left = event.clientX + "px";
     contextMenu.style.top = event.clientY + "px";
     messagesList.appendChild(contextMenu);
-
     createContextMenuDelete();
     createContextMenuEdit();
 
@@ -47,29 +40,24 @@ const createContextMenu = () => {
     })
 
     contextMenuEditButton.addEventListener("click", () => {
-        beingEdited = selectedMessage.innerText;
         createEditInput();
         selectedMessage.parentNode.replaceChild(editInputWrapper, selectedMessage);
+        editInput.focus();
     })
 }
 
 const createEditInput = () => {
-    //test
     editInputWrapper = document.createElement("div");
-    editInputWrapper.classList.add("edit-input-wrapper")
-
-
+    editInputWrapper.classList.add("edit-input-wrapper");
 
     editInput = document.createElement("input");
     editInput.classList.add("edit-input");
-    editInput.value = beingEdited;
+    editInput.value = selectedMessage.innerText;
 
-    //test
     editInputWrapper.appendChild(editInput);
 
-
     editInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
+        if (e.key === "Enter" && editInput.value !== "") {
             createNewEditedMessage();
         }
     })
@@ -79,10 +67,13 @@ const createEditInput = () => {
 
 const createNewEditedMessage = () => {
     messageListItem = document.createElement("li");
-    messageListItem.classList.add("message-content"); 
+    messageListItem.classList.add("message-content");
     messageListItem.innerText = editInput.value;
+    messageListItem.addEventListener("contextmenu", (e) => {
+        selectedMessage = e.target;
+        createContextMenu();
+    })
     editInputWrapper.parentNode.replaceChild(messageListItem, editInputWrapper);
-    // ADD THE ID TO THE MESSAGE BACK AGAIN, JUST STORE THE VALUE BEFORE REMOVING IT
 }
 
 const createContextMenuDelete = () => {
@@ -114,3 +105,4 @@ document.addEventListener("contextmenu", (e) => {
 document.addEventListener("click", () => {
     contextMenu.remove();
 })
+
