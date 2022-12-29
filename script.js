@@ -9,18 +9,9 @@ var selectedMessage;
 var beingEdited;
 var editInput;
 var editInputWrapper;
+var messageAndTimeWrapper;
 
-const createMessage = () => {
-    messageListItem = document.createElement("li");
-    messageListItem.classList.add("message-content");
-    messageListItem.innerText = input.value;
-    messagesList.appendChild(messageListItem);
-    input.value = "";
-    messageListItem.addEventListener("contextmenu", (e) => {
-    selectedMessage = e.target;
-    createContextMenu();
-    })
-}
+// functions
 
 const createContextMenu = () => {
     if (contextMenu !== undefined){
@@ -40,10 +31,14 @@ const createContextMenu = () => {
     })
 
     contextMenuEditButton.addEventListener("click", () => {
+        if (editInputWrapper == undefined || editInputWrapper == null) {
         createEditInput();
         selectedMessage.parentNode.replaceChild(editInputWrapper, selectedMessage);
         editInput.focus();
-    })
+    }})
+    document.addEventListener("click", () => {
+    contextMenu.remove();
+})
 }
 
 const createEditInput = () => {
@@ -52,34 +47,72 @@ const createEditInput = () => {
 
     editInput = document.createElement("input");
     editInput.classList.add("edit-input");
-    editInput.value = selectedMessage.innerText;
+    editInput.value = selectedMessage.querySelector(".message-content").innerText;
+
+    editInputCancelWarn = document.createElement("div");
+    editInputCancelWarn.classList.add("edit-input-cancel-warn");
+    editInputCancelWarn.innerText = `press escape to cancel`;
 
     editInputWrapper.appendChild(editInput);
+    editInputWrapper.appendChild(editInputCancelWarn);
 
     editInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && editInput.value !== "") {
-            createNewEditedMessage();
+            createNewEditedMessage(editInput.value);
+        }
+    })
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            createNewEditedMessage(selectedMessage.querySelector(".message-content").innerText);
         }
     })
 }
 
-// other functions
+const createNewEditedMessage = (message) => {
+    messageAndTimeWrapper = document.createElement("div");
+    messageAndTimeWrapper.classList.add("message-and-time-wrapper");
 
-const createNewEditedMessage = () => {
     messageListItem = document.createElement("li");
     messageListItem.classList.add("message-content");
-    messageListItem.innerText = editInput.value;
-    messageListItem.addEventListener("contextmenu", (e) => {
+    messageListItem.innerText = message;
+
+    addMessageTime();
+
+    messageAndTimeWrapper.appendChild(messageListItem);
+
+    messageAndTimeWrapper.addEventListener("contextmenu", (e) => {
         selectedMessage = e.target;
         createContextMenu();
     })
-    editInputWrapper.parentNode.replaceChild(messageListItem, editInputWrapper);
+
+    editInputWrapper.parentNode.replaceChild(messageAndTimeWrapper, editInputWrapper);
+    editInputWrapper = undefined;
+}
+
+const createMessage = () => {
+    messageAndTimeWrapper = document.createElement("div");
+    messageAndTimeWrapper.classList.add("message-and-time-wrapper");
+
+    messageListItem = document.createElement("li");
+    messageListItem.classList.add("message-content");
+    messageListItem.innerText = input.value;
+
+    addMessageTime();
+
+    messageAndTimeWrapper.appendChild(messageListItem);
+    messagesList.appendChild(messageAndTimeWrapper);
+    input.value = "";
+
+    messageAndTimeWrapper.addEventListener("contextmenu", (e) => {
+        selectedMessage = e.target;
+        createContextMenu();
+    })
 }
 
 const createContextMenuDelete = () => {
     contextMenuDeleteButton = document.createElement("div");
     contextMenuDeleteButton.classList.add("context-menu-delete-button");
-    contextMenuDeleteButton.innerText = "Delete"
+    contextMenuDeleteButton.innerText = "Delete";
     contextMenu.appendChild(contextMenuDeleteButton);
 }
 
@@ -90,9 +123,31 @@ const createContextMenuEdit = () => {
     contextMenu.appendChild(contextMenuEditButton);
 }
 
+const addMessageTime = () => {
+    let messageDate = new Date;
+    let messageHours = messageDate.getHours();
+    let messageMinutes = messageDate.getMinutes();
+
+    let amOrPm;
+    if (messageHours < 12) {
+        amOrPm = "AM";
+    } else {
+        amOrPm = "PM";
+    }
+
+    if (messageMinutes < 10) {
+        messageMinutes = "0" + messageMinutes;
+    }
+
+    let messageTime = document.createElement("span");
+    messageTime.classList.add("message-time");
+    messageTime.innerText = messageHours + ":" + messageMinutes + " " + amOrPm;
+    messageAndTimeWrapper.appendChild(messageTime);
+}
+
 // event listeners
 
-document.addEventListener("keydown", (e) => {
+input.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && input.value !== "") {
         createMessage();
     }
@@ -102,7 +157,4 @@ document.addEventListener("contextmenu", (e) => {
     e.preventDefault();
 })
 
-document.addEventListener("click", () => {
-    contextMenu.remove();
-})
 

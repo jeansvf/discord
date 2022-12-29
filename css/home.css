@@ -19,7 +19,6 @@ body {
     display: flex;
     background: #202225;
     min-width: 72px;
-    height: 100vh;
 }
 
 .private-channels {
@@ -31,28 +30,51 @@ body {
 .messages-wrapper {
     display: flex;
     flex-direction: column;
-    height: 100vh;
     width: 100%;
+    min-height: 100vh;
     background: #36393f;
     justify-content: flex-end;
+}
+
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.message-and-time-wrapper {
+    display: flex;
+    align-items: center;
+    width: 80vw;
 }
 
 .message-content {
     font-size: 16px;
     color: #ffffff;
-    padding: 2px;
-    padding-left: 56px;
+    padding: 2px 0;
+    pointer-events: none;
 }
 
-.message-content:hover {
+.message-time {
+    padding: 0 16px;
+    color: #36393f;
+    font-size: 12px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.message-and-time-wrapper:hover {
     background: #32353b;
-}   
+}
+
+.message-and-time-wrapper:hover .message-time {
+    color: #767a82;
+}
 
 .chat-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    width: 80vw;
     height: 90px;
 }
 
@@ -64,6 +86,7 @@ body {
 .chat-input {
     display: flex;
     width: 100%;
+    margin-left: 16px;
     padding: 11px 10px 11px 0;
     background: #40444b;
     outline: 0;
@@ -119,16 +142,26 @@ input[type=text] {
 
 .edit-input-wrapper {
     display: flex;
+    flex-direction: column;
     background: #32353b;
-    height: 60px;
-    align-items: center;
+    height: 75px;
+    justify-content: center;
+}
+
+.edit-input-cancel-warn {
+    display: flex;
+    align-self: flex-start;
+    margin-left: 60px;
+    color: #b9bbbe;
+    font-size: 12px;
 }
 
 .edit-input {
     margin-left: 56px;
     padding-left: 18px;
     height: 44px;
-    width: calc(100% - 200px);
+    width: 1200px;
+    align-self: flex-start;
     background: #40444b;
     border-radius: 8px;
     font-size: 16px;
